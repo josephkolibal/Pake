@@ -82,6 +82,12 @@ jobs:
         if: runner.os == 'Linux'
         uses: rui314/setup-mold@v1
 
+      - name: Fix strip tool for Linux
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get install -y binutils-x86-64-linux-gnu
+          sudo ln -sf /usr/bin/x86_64-linux-gnu-strip /usr/local/bin/strip
+
       - name: Rust cache restore
         uses: actions/cache/restore@v4.2.0
         id: cache_store
