@@ -129,7 +129,7 @@ jobs:
           fi
 
           echo "Running: node dist/cli.js ${ARGS[@]}"
-          node dist/cli.js "${ARGS[@]}"
+          NO_STRIP=1 node dist/cli.js "${ARGS[@]}"
 
       - name: Build App (Windows)
         if: runner.os == 'Windows'
